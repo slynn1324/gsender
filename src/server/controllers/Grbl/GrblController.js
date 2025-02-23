@@ -1892,6 +1892,22 @@ class GrblController {
                 let unitModal = (units === METRIC_UNITS) ? 'G21' : 'G20';
                 let { $20, $130, $131, $132, $23, $13 } = this.settings.settings;
 
+                //SL - fix for keyboard/gamepad continuous jogging
+                log.debug('axes=' + JSON.stringify(axes) + ' $20=' + $20);
+                if (axes.x) {
+                    axes.X = axes.x;
+                    delete axes.x;
+                }
+                if (axes.y) {
+                    axes.Y = axes.y;
+                    delete axes.y;
+                }
+                if (axes.z) {
+                    axes.Z = axes.z;
+                    delete axes.z;
+                }
+                //SL END
+
                 let jogFeedrate;
                 if ($20 === '1') {
                     $130 = Number($130);
