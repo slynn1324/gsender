@@ -76,21 +76,21 @@ jobs:
           cp -af "output/${PACKAGE_NAME}-${PACKAGE_VERSION}-arm64.AppImage" "releases/linux/${PACKAGE_NAME}-${PACKAGE_VERSION}-Linux-ARM-64Bit.AppImage"
           cp -af "output/${PACKAGE_NAME}-${PACKAGE_VERSION}-arm64.deb" "releases/linux/${PACKAGE_NAME}-${PACKAGE_VERSION}-Linux-ARM-64Bit.deb"
           ls -al output releases/linux
-          if [[ "$GITHUB_REF_TYPE" == "branch" && "$GITHUB_REF_NAME" == "master" ]]; then
-            yarn github-release delete \
-              --owner=gSender \
-              --repo=gsender \
-              --tag="${GITHUB_REF_NAME}-latest" \
-              --release-name="${GITHUB_REF_NAME}" \
-              "*-linux*";
-            yarn github-release upload \
-              --owner=gSender \
-              --repo=gsender \
-              --tag="${GITHUB_REF_NAME}-latest" \
-              --release-name="${GITHUB_REF_NAME}" \
-              --body="${GIT_COMMIT_LOG}" \
-              releases/linux/*;
-          fi
+          #if [[ "$GITHUB_REF_TYPE" == "branch" && "$GITHUB_REF_NAME" == "master" ]]; then
+          #  yarn github-release delete \
+          #    --owner=gSender \
+          #    --repo=gsender \
+          #    --tag="${GITHUB_REF_NAME}-latest" \
+          #    --release-name="${GITHUB_REF_NAME}" \
+          #    "*-linux*";
+          #  yarn github-release upload \
+          #    --owner=gSender \
+          #    --repo=gsender \
+          #    --tag="${GITHUB_REF_NAME}-latest" \
+          #    --release-name="${GITHUB_REF_NAME}" \
+          #    --body="${GIT_COMMIT_LOG}" \
+          #    releases/linux/*;
+          #fi
       #- name: Upload release assets
       #  uses: actions/github-script@v6
       #  with:
