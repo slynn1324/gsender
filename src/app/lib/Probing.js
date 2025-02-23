@@ -127,7 +127,8 @@ const updateOptionsForDirection = (options, direction) => {
     // Figure out movement distances for getting bit into position
     let xyMovement = toolDiameter + 20;
     options.xyPositionAdjust = (units === METRIC_UNITS) ? xyMovement : mm2in(xyMovement).toFixed(3);
-    options.zPositionAdjust = (units === METRIC_UNITS) ? 15 : mm2in(15).toFixed(3);
+    //options.zPositionAdjust = (units === METRIC_UNITS) ? 15 : mm2in(15).toFixed(3);
+    options.zPositionAdjust = (units === METRIC_UNITS) ? 8 : mm2in(8).toFixed(3); //SL CHANGE Z DEPTH TO 8mm
 
     return options;
 };
@@ -161,13 +162,15 @@ export const get3AxisStandardRoutine = (options) => {
 
     if (axes.z) {
         //SL - FIX FOR OPENBUILDS PROBE
-        code.push('G91 G0 X22.5 Y22.5');
+        const zProbeXPosition = (options.units === METRIC_UNITS) ? 22.5 : 0.885;
+        const zProbeYPosition = (options.units === METRIC_UNITS) ? 22.5 : 0.885; 
+        code.push(`G91 G0 X${zProbeXPosition} Y${zProbeYPosition}`);
         //SL END
 
         code.push(...getSingleAxisStandardRoutine('Z'));
 
         //SL - fix for openbuilds probe
-        code.push('G91 X-22.5 Y-22.5'); // move back to start xy
+        code.push(`G91 G0 X${-1 * zProbeXPosition} Y${-1 * zProbeYPosition}`); // move back to start xy
         //SL END
 
         // Z also handles positioning for next probe on X
