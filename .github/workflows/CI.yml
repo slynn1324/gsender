@@ -91,6 +91,10 @@ jobs:
           #    --body="${GIT_COMMIT_LOG}" \
           #    releases/linux/*;
           #fi
+      - name: "upload artifacts"
+        uses: actions/upload-artifact@v4
+        with:
+          path: releases/linux/*.AppImage
       #- name: Upload release assets
       #  uses: actions/github-script@v6
       #  with:
