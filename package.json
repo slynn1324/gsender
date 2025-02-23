@@ -1,6 +1,6 @@
 {
   "name": "gSender",
-  "version": "1.4.11",
+  "version": "1.4.11-sl",
   "description": "Electron sender for GRBL based CNC machines",
   "author": {
     "name": "Sienci Labs <hi@sienci.com>",
@@ -103,6 +103,9 @@
       "createDesktopShortcut": false,
       "createStartMenuShortcut": false,
       "include": "electron-build/installer.nsh"
+    },
+    "publisher":{
+	"provider":"github"
     },
     "mac": {
       "category": "public.app-category.productivity",
