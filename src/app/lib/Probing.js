@@ -163,7 +163,7 @@ export const get3AxisStandardRoutine = (options) => {
     if (axes.z) {
         //SL - FIX FOR OPENBUILDS PROBE
         const zProbeXPosition = (options.units === METRIC_UNITS) ? 22.5 : 0.885;
-        const zProbeYPosition = (options.units === METRIC_UNITS) ? 22.5 : 0.885; 
+        const zProbeYPosition = (options.units === METRIC_UNITS) ? 22.5 : 0.885;
         code.push(`G91 G0 X${zProbeXPosition} Y${zProbeYPosition}`);
         //SL END
 
