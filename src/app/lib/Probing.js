@@ -160,15 +160,14 @@ export const get3AxisStandardRoutine = (options) => {
     }
 
     if (axes.z) {
-
         //SL - FIX FOR OPENBUILDS PROBE
-        code.push('G91 G0 X22.5 Y22.5')
+        code.push('G91 G0 X22.5 Y22.5');
         //SL END
 
         code.push(...getSingleAxisStandardRoutine('Z'));
 
         //SL - fix for openbuilds probe
-        code.push('G91 X-22.5 Y-22.5') // move back to start xy
+        code.push('G91 X-22.5 Y-22.5'); // move back to start xy
         //SL END
 
         // Z also handles positioning for next probe on X
